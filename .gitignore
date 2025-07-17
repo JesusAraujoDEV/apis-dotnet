@@ -1,0 +1,75 @@
+# Binary files
+*.dll
+*.pdb
+*.exe
+*.obj
+*.suo
+*.user
+*.userosf
+*.bak
+*.log
+*.ncb
+*.sbr
+*.bsc
+*.res
+*.pch
+*.ilk
+*.aps
+*.map
+*.ipch
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# VS Code
+.vscode/
+
+# Visual Studio specific files
+*.vspscc
+*.vssscc
+*.waf
+*.webtest
+*.testsettings
+
+# User-specific files
+*.userprefs
+
+# NuGet packages
+packages/
+*.nupkg
+.nuget/
+!packages.config # Para mantener si lo usas en un proyecto viejo
+
+# ASP.NET Core specific
+appsettings*.Development.json # A veces se ignora para no subir info sensible del dev
+appsettings.json.user
+appsettings.Development.json.user
+Generated_StrongName_Keys/
+
+# Docker
+Dockerfile.debug
+.dockerignore
+
+# Temporary files and folders
+temp/
+tmp/
+*.tmp
+*.bak
+*.old
+
+# Rider
+.idea/
+
+# Dotnet tool local folder
+.config/dotnet-tools.json # Si usas herramientas locales y quieres versionarlas, quita esto.
+.tool/
+
+# Test results
+TestResults/
+*.trx
+
+# For ASP.NET Core projects running in IIS
+*.publish
