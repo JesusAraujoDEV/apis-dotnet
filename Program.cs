@@ -25,7 +25,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseWelcomePage();
+//app.UseWelcomePage();
+app.UseTimeMiddleware();
 
 app.MapControllers();
 
