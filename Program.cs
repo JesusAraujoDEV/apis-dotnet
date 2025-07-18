@@ -1,3 +1,4 @@
+using apis_dotnet.Services;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 //builder.Services.AddScoped<IHelloWorldService, HelloWorldService>();
 builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldService());
+builder.Services.AddScoped<ITareaService, TareaService>();
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
 var app = builder.Build();
 
