@@ -73,3 +73,5 @@ TestResults/
 
 # For ASP.NET Core projects running in IIS
 *.publish
+
+sql_data/

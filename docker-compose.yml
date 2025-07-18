@@ -1,0 +1,18 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:latest
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: wuejejejAURA777
+    volumes:
+      - ./sql_data:/var/opt/mssql/data
+    networks:
+      - app-network
+volumes:
+  sql_data:
+
+networks:
+  app-network:
+    driver: bridge
