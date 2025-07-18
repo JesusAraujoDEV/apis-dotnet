@@ -9,17 +9,13 @@ public class TimeMiddlware
 
     public async Task Invoke(HttpContext context)
     {
-        
+        await _next(context);
 
         if (context.Request.Query.Any(p => p.Key == "time"))
         {
             await context.Response.WriteAsync($"Current Time: {DateTime.Now}");
         }
-
-        if (!context.Response.HasStarted)
-        {
-            await _next(context);
-        }
+        
         
     }
 }
