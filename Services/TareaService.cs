@@ -16,6 +16,16 @@ public class TareaService : ITareaService
         return _context.Tareas.ToList();
     }
 
+    public async Task<Tarea> GetById(Guid id)
+    {
+        var tarea = await _context.Tareas.FindAsync(id);
+        if (tarea == null)
+        {
+            throw new Exception("Tarea no encontrada");
+        }
+        return tarea;
+    }
+
     public async Task Save(Tarea tarea)
     {
 
@@ -60,6 +70,7 @@ public class TareaService : ITareaService
 public interface ITareaService
 {
     IEnumerable<Tarea> Get();
+    Task<Tarea> GetById(Guid id);
     Task Save(Tarea tarea);
     Task Update(Guid id, Tarea tarea);
     Task Delete(Guid id);

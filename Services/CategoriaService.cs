@@ -16,6 +16,16 @@ public class CategoriaService : ICategoriaService
         return _context.Categorias.ToList();
     }
 
+    public async Task<Categoria> GetById(Guid id)
+    {
+        var categoria = await _context.Categorias.FindAsync(id);
+        if (categoria == null)  
+        {
+            throw new Exception("Categoria no encontrada");
+        }
+        return categoria;
+    }
+
     public async Task Save(Categoria categoria)
     {
 
@@ -58,6 +68,7 @@ public class CategoriaService : ICategoriaService
 public interface ICategoriaService
 {
     IEnumerable<Categoria> Get();
+    Task<Categoria> GetById(Guid id);
     Task Save(Categoria categoria);
     Task Update(Guid id, Categoria categoria);
     Task Delete(Guid id);

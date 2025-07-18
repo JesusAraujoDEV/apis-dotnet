@@ -1,5 +1,8 @@
+using apis_dotnet;
 using apis_dotnet.Services;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using apis_dotnet.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +12,20 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddScoped<IHelloWorldService, HelloWorldService>();
-builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldService());
+
+var connectionString = builder.Configuration.GetConnectionString("cnTareas");
+
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException("La cadena de conexión 'cnTareas' no se encontró en la configuración.");
+}
+
+builder.Services.AddDbContext<TareasContext>(options =>
+    options.UseSqlServer(connectionString)
+);
+
+
+builder.Services.AddScoped<IHelloWorldService, HelloWorldService>();
 builder.Services.AddScoped<ITareaService, TareaService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
